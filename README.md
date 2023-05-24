@@ -11,7 +11,7 @@ In this phase, the new requirement is that any user that has successfully logged
 ### Links and Resources
 
 - [GitHub Actions ci/cd](https://github.com/KenyaWomack/api-server/actions)
-- [back-end prod server url](https://auth-api-8q92.onrender.com/)
+- [Render url](https://github.com/KenyaWomack/auth-api/actions/new)
 
 ### Collaborators
 

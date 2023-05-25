@@ -19,7 +19,7 @@ In this phase, the new requirement is that any user that has successfully logged
 
 ### Setup
 
-#### `.env` requirements (where applicable)
+#### `.env` requirements (where applicable).
 
 Using only PORT which can be found on `.env.sample`
 

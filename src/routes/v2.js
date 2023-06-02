@@ -1,9 +1,10 @@
 'use strict';
 
 const router = express.Router();
-const acl = require('../middleware/acl');
 const express = require('express');
 const dataModules = require('../models');
+const bearerAuth = require('../auth/middleware/bearer');
+const permissions = require('../auth/middleware/permissions');
 
 router.param('model', (req, res, next) => {
   const modelName = req.params.model;
@@ -15,22 +16,27 @@ router.param('model', (req, res, next) => {
   }
 });
 
-router.get('/:model', basicAuth, handleGetAll);
-router.get('/:model/:id', basicAuth, handleGetOne);
-router.post('/:model', bearerAuth, acl ('Require Create'), handleCreate);
-router.put('/:model/:id', bearerAuth, acl ('Require Update'), handleUpdate);
-router.delete('/:model/:id',bearerAuth, acl ('Delete'), handleDelete);
-router.patch('/.model/:id',bearerAuth, acl ('Patch'), handlePatch);
+router.get('/:model', bearerAuth, handleGetAll);
+router.get('/:model/:id', bearerAuth, handleGetOne);
+router.post('/:model', bearerAuth, permissions('create') ('Require Create'), handleCreate);
+router.put('/:model/:id', bearerAuth, permissions('update')  ('Require Update'), handleUpdate);
+router.delete('/:model/:id',bearerAuth, permissions('delete') ('Delete'), handleDelete);
+// not needed even though it is in instruction, no patch.js file
+// router.patch('/.model/:id',bearerAuth, permissions() ('Patch'), handlePatch);
 
 async function handleGetAll(req, res) {
   let allRecords = await req.model.get();
   res.status(200).json(allRecords);
 }
 
-async function handleGetOne(req, res) {
-  const id = req.params.id;
-  let theRecord = await req.model.get(id)
-  res.status(200).json(theRecord);
+async function handleGetOne(req, res, next) {
+  try {
+    const id = req.params.id;
+    let theRecord = await req.model.get(id);
+    res.status(200).json(theRecord);
+  }catch(e){
+    next(e.message || e);
+  }
 }
 
 async function handleCreate(req, res) {

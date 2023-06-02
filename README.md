@@ -1,6 +1,6 @@
-# LAB - 03
+# LAB - 08
 
-## Project: Bearer Auth
+## Project: Auth-API
 
 ### Author: Kenya Womack
 

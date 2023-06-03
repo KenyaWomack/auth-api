@@ -11,12 +11,12 @@ In this phase, the new requirement is that any user that has successfully logged
 ### Links and Resources
 
 - [GitHub Actions ci/cd](https://github.com/KenyaWomack/api-server/actions)
-- [Render url](https://github.com/KenyaWomack/auth-api/actions/new)
+- [Render url](https://authapi-o34b.onrender.com/)
 
 ### Collaborators
 
 - Coriana Williams
-- Hayden 
+- Hayden Cooper
 
 ### Setup
 

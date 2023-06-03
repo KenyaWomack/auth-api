@@ -45,11 +45,3 @@ module.exports = {
   },
 };
 
-module.exports = {
-  server: app,
-  start: (port) => {
-    app.listen(port, () => {
-      console.log(`Server Up on ${port}`);
-    });
-  },
-};

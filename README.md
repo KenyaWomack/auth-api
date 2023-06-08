@@ -39,3 +39,6 @@ To run tests, after running `npm i`, run the command `npm test`.
 #### UML
 
 ![UML image](UMLlab08.png)
+
+Make sure words are spelled properly
+

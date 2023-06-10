@@ -18,7 +18,7 @@ const app = express();
 app.use(cors());
 
 const v1Routes = require('./routes/v1.js');
-
+const v2Routes = require('./routes/v2.js');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -29,6 +29,7 @@ app.use(authRoutes);
 app.use(logger);
 
 app.use('/api/v1', v1Routes);
+app.use('/api/v2', v2Routes);
 
 app.use('*', notFoundHandler);
 app.use(errorHandler);

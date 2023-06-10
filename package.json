@@ -12,14 +12,15 @@
     "sequelize": "^6.32.0",
     "sequelize-cli": "^6.6.0",
     "sqlite": "^4.2.1",
-    "sqlite3": "^5.1.6"
+    "sqlite3": "^5.1.6",
+    "supertest": "^6.3.3"
   },
   "name": "auth-api",
   "description": "## Overview",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "NODE_ENV=test jest --verbose --coverage",
     "db:config": "sequelize init:config",
     "db:create": "sequelize db:create"
   },

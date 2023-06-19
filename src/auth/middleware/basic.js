@@ -1,7 +1,8 @@
 'use strict';
 
 const base64 = require('base-64');
-const { users } = require('../models');
+// this was updated to import from the root level models/index.js
+const { users } = require('../../models/index');
 
 module.exports = async (req, res, next) => {
 

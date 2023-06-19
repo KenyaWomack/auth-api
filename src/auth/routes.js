@@ -3,6 +3,7 @@
 const express = require('express');
 const authRouter = express.Router();
 
+// this was updated to import from the root level models/index.js
 const { users } = require('../models/index');
 const basicAuth = require('./middleware/basic.js');
 const bearerAuth = require('./middleware/bearer.js');
@@ -24,7 +25,7 @@ authRouter.post('/signup', async (req, res, next) => {
 authRouter.post('/signin', basicAuth, (req, res, next) => {
   const user = {
     user: req.user,
-    token: req.user.token
+    token: req.user.token,
   };
   res.status(200).json(user);
 });
@@ -36,7 +37,7 @@ authRouter.get('/users', bearerAuth, permissions('delete'), async (req, res, nex
 });
 
 authRouter.get('/secret', bearerAuth, async (req, res, next) => {
-  res.status(200).send('Welcome to the secret area')
+  res.status(200).send('Welcome to the secret area');
 });
 
 module.exports = authRouter;
